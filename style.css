@@ -1,0 +1,251 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    overflow: hidden;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 背景容器 */
+#background-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+}
+
+/* 粒子样式 */
+.particle {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: float 6s ease-in-out infinite;
+}
+
+.heart {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #ff4757;
+    transform: rotate(45deg);
+    animation: float 8s ease-in-out infinite;
+}
+
+.heart::before,
+.heart::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #ff4757;
+    border-radius: 50%;
+}
+
+.heart::before {
+    top: -10px;
+    left: 0;
+}
+
+.heart::after {
+    top: 0;
+    left: -10px;
+}
+
+/* 花束容器 */
+#flower-container {
+    position: relative;
+    width: 300px;
+    height: 400px;
+    cursor: pointer;
+}
+
+/* 花朵样式 */
+.flower {
+    position: absolute;
+    transform-origin: bottom center;
+}
+
+.petal {
+    position: absolute;
+    border-radius: 100% 0 100% 0;
+    transform-origin: bottom right;
+    animation: bloom 2s ease-out forwards;
+}
+
+.center {
+    position: absolute;
+    border-radius: 50%;
+    background-color: #ffd700;
+}
+
+.stem {
+    position: absolute;
+    width: 6px;
+    background-color: #2ecc71;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.leaf {
+    position: absolute;
+    width: 40px;
+    height: 20px;
+    background-color: #27ae60;
+    border-radius: 100% 0 100% 0;
+}
+
+/* 祝福语容器 */
+#message-container {
+    position: relative;
+    text-align: center;
+    padding: 40px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    margin: 20px;
+    animation: fadeIn 2s ease-out forwards;
+}
+
+#message-container h1 {
+    color: #e74c3c;
+    margin-bottom: 20px;
+    font-size: 2.5em;
+    animation: slideInDown 1s ease-out forwards;
+}
+
+#message-container p {
+    color: #333;
+    margin: 10px 0;
+    font-size: 1.2em;
+    opacity: 0;
+    animation: fadeIn 1s ease-out forwards;
+}
+
+#message-container p:nth-child(2) {
+    animation-delay: 0.5s;
+}
+
+#message-container p:nth-child(3) {
+    animation-delay: 1s;
+}
+
+#message-container p:nth-child(4) {
+    animation-delay: 1.5s;
+}
+
+#message-container p:nth-child(5) {
+    animation-delay: 2s;
+}
+
+#message-container p:nth-child(6) {
+    animation-delay: 2.5s;
+}
+
+#message-container p:nth-child(7) {
+    animation-delay: 3s;
+}
+
+#message-container p:nth-child(8) {
+    animation-delay: 3.5s;
+    font-weight: bold;
+    color: #e74c3c;
+}
+
+/* 隐藏类 */
+.hidden {
+    display: none;
+}
+
+/* 动画定义 */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) rotate(45deg);
+    }
+    50% {
+        transform: translateY(-20px) rotate(45deg);
+    }
+}
+
+@keyframes bloom {
+    0% {
+        transform: scale(0) rotate(0deg);
+    }
+    100% {
+        transform: scale(1) rotate(-45deg);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    #flower-container {
+        width: 250px;
+        height: 350px;
+    }
+
+    #message-container {
+        padding: 30px;
+        margin: 10px;
+    }
+
+    #message-container h1 {
+        font-size: 2em;
+    }
+
+    #message-container p {
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 480px) {
+    #flower-container {
+        width: 200px;
+        height: 300px;
+    }
+
+    #message-container {
+        padding: 20px;
+    }
+
+    #message-container h1 {
+        font-size: 1.8em;
+    }
+
+    #message-container p {
+        font-size: 0.9em;
+    }
+}
